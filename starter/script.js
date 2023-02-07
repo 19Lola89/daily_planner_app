@@ -57,4 +57,28 @@ for (let i = 0; i < businessHours.length; i++) {
   row.append(row, hourEl, timeSpace, saveButton);
   $(".container").append(row);
 }
-// local stoarge
+// saving to local storage
+
+$(".saveBtn").on("click", function () {
+  let btnId = $(this).attr("data-id");
+  let event = $("#" + btnId).val();
+  let choreObj = JSON.parse(localStorage.getItem("chores")) || [];
+  choreObj.push({
+    time: btnId,
+    description: event,
+  });
+
+  // add to local storage
+  localStorage.setItem("chores", JSON.stringify(choreObj));
+});
+// take from local storage
+
+$(document).ready(function () {
+  let savedChores = JSON.parse(localStorage.getItem("chores"));
+  for (let i = 0; i < savedChores.length; i++) {
+    // console.log(savedChores[i].time);
+    let logTime = savedChores[i].time;
+    let tasksLeft = savedChores[i].description;
+    $("#" + logTime).text(tasksLeft);
+  }
+});
