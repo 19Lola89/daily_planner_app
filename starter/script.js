@@ -11,8 +11,6 @@
 const toDate = moment().format("MMMM Do YYYY");
 const currentHour = moment().hour();
 
-// const militaryHours = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
-
 var businessHours = [
   "9 AM",
   "10 AM",
@@ -25,6 +23,38 @@ var businessHours = [
   "5 PM",
   "6 PM",
 ];
+
+var hourFormat = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+
 // setting the header to correct date and time
 
 $("#currentDay").text(toDate);
+
+// creating a loop for business hours
+
+for (let i = 0; i < businessHours.length; i++) {
+  //adding the elements to DOM
+  let row = $("<div class='row'>");
+  let hourEl = $(" <span class='input-group-text hour'>").text(
+    businessHours[i]
+  );
+  let timeSpace = $("<input type='text'class='box-style'/>").attr("id", i);
+
+  // setting the data atr for colour-code
+  if (currentHour === hourFormat[i]) {
+    timeSpace.addClass("present");
+  } else if (currentHour > hourFormat[i]) {
+    timeSpace.addClass("past");
+  } else {
+    timeSpace.addClass("future");
+  }
+
+  let buttonIcon = $("<i class='fas fa-save fa-2x'>");
+  let saveButton = $("<button class='btn saveBtn'>")
+    .attr("data-id", i)
+    .append(buttonIcon);
+
+  row.append(row, hourEl, timeSpace, saveButton);
+  $(".container").append(row);
+}
+// local stoarge
