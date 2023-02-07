@@ -20,6 +20,7 @@ N/A
 MIT
 
 ## Deployment link and screenshot
+https://19lola89.github.io/daily_planner_app/
 
 URL:  https://19lola89.github.io/personal_portfolio/
 
