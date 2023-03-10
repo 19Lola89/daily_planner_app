@@ -1,12 +1,3 @@
-// use moment js to compare current time using moment js to hours in the day. use conditionals to do that. Its to do with red and greeen rows. relates to color. color-code past, present and future.
-
-// save button save to local storage.
-//pseudo code :
-// 2. calendar shows 9am to 5pm hourly text row with save button
-// 3. current hour is highlighted one colour, past- the other and future another (use data-sets? )
-// 4. save button and local storage, input field obv
-// 5.
-
 //setting variables needed
 const toDate = moment().format("MMMM Do YYYY");
 const currentHour = moment().hour();
@@ -60,25 +51,34 @@ for (let i = 0; i < businessHours.length; i++) {
 // saving to local storage
 
 $(".saveBtn").on("click", function () {
-  let btnId = $(this).attr("data-id");
-  let event = $("#" + btnId).val();
+  let timeSpanner = $(this).attr("data-id");
+  let event = $("#" + timeSpanner).val();
   let choreObj = JSON.parse(localStorage.getItem("chores")) || [];
   choreObj.push({
-    time: btnId,
+    location: timeSpanner,
     description: event,
   });
-
-  // add to local storage
   localStorage.setItem("chores", JSON.stringify(choreObj));
 });
+
 // take from local storage
 
 $(document).ready(function () {
-  let savedChores = JSON.parse(localStorage.getItem("chores"));
-  for (let i = 0; i < savedChores.length; i++) {
-    // console.log(savedChores[i].time);
-    let logTime = savedChores[i].time;
-    let tasksLeft = savedChores[i].description;
-    $("#" + logTime).text(tasksLeft);
+  let storageTasks = JSON.parse(localStorage.getItem("chores")) || [];
+
+  for (let i = 0; i < storageTasks.length; i++) {
+    let taskLocation = storageTasks[i].location;
+    let taskDescription = storageTasks[i].description;
+    $("#" + taskLocation).val(taskDescription);
   }
 });
+
+// $(document).ready(function () {
+//   let storageTasks = JSON.parse(localStorage.getItem("chores")) || [];
+
+//   for (let i = 0; i < storageTasks.length; i++) {
+//     let taskLocation = storageTasks[i].location;
+//     let taskText = storageTasks[i].description;
+//     $("#" + taskLocation).val(taskText);
+//   }
+// });
