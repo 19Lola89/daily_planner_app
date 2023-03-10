@@ -20,9 +20,9 @@ N/A
 MIT
 
 ## Deployment link and screenshot
-https://github.com/19Lola89/daily_planner_app/edit/main/README.md
 
-URL:  https://19lola89.github.io/daily_planner_app/
+
+URL: 
 
 <img width="1440" alt="Screenshot 2023-02-07 at 21 05 41" src="https://user-images.githubusercontent.com/86410482/217365487-7d2d0a31-0527-4f1b-8a36-3f845ee69e99.png">
 
