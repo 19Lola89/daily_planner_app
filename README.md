@@ -21,6 +21,8 @@ MIT
 
 ## Deployment link and screenshot
 
+https://github.com/19Lola89/mundane-todolist
+
 
 URL: https://19lola89.github.io/mundane-todolist/
 
