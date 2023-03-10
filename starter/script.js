@@ -50,9 +50,10 @@ for (let i = 0; i < businessHours.length; i++) {
 }
 // saving to local storage
 
-$(".saveBtn").on("click", function () {
+$(".saveBtn").on("click", function (event) {
+  event.preventDefault(); // prevent default behaviour
   let timeSpanner = $(this).attr("data-id");
-  let event = $("#" + timeSpanner).val();
+  event = $("#" + timeSpanner).val();
   let choreObj = JSON.parse(localStorage.getItem("chores")) || [];
   choreObj.push({
     location: timeSpanner,
@@ -68,17 +69,7 @@ $(document).ready(function () {
 
   for (let i = 0; i < storageTasks.length; i++) {
     let taskLocation = storageTasks[i].location;
-    let taskDescription = storageTasks[i].description;
-    $("#" + taskLocation).val(taskDescription);
+    let taskText = storageTasks[i].description;
+    $("#" + taskLocation).val(taskText);
   }
 });
-
-// $(document).ready(function () {
-//   let storageTasks = JSON.parse(localStorage.getItem("chores")) || [];
-
-//   for (let i = 0; i < storageTasks.length; i++) {
-//     let taskLocation = storageTasks[i].location;
-//     let taskText = storageTasks[i].description;
-//     $("#" + taskLocation).val(taskText);
-//   }
-// });
